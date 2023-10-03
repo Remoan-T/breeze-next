@@ -31,13 +31,15 @@ const DraggableHeaderCell = ({ column, onDragStart }) => {
 
   const style = {
     cursor: "grab",
-    backgroundColor: "#C0E3E5",
+    // backgroundColor: "#C0E3E5",
+    backgroundColor: "transparent",
     height: "53px", 
-    borderRight: "2px solid #EFEFEF",
+    // borderRight: "2px solid #EFEFEF",
     fontWeight: "bold",
      boxShadow: isDragging ? "5px 5px 10px rgba(0, 0, 0, 0.2)" : "none",
     transform: isDragging ? "rotate(-5deg)" : "none",
     transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
+   
 
   };
 
@@ -79,7 +81,7 @@ const DataTable = ({rows,columnsData}) => {
 
   return (
     
-
+<div style={{marginTop:"50px" , padding:"80px" ,}}>
    <DndContext
   sensors={sensors}
   onDragEnd={handleDragEnd}
@@ -87,7 +89,7 @@ const DataTable = ({rows,columnsData}) => {
   modifiers={[restrictToHorizontalAxis]}
 >
   <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+    <Table sx={{ minWidth: 650}} size="small" aria-label="a dense table">
       <TableHead>
         <TableRow>
           {columns.map((column) => (
@@ -106,7 +108,7 @@ const DataTable = ({rows,columnsData}) => {
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             {columns.map((column) => (
-              <TableCell style={{height: "53px",border: "2px solid #EFEFEF",}} key={column.id}>
+              <TableCell style={{height: "53px",borderTop: "2px solid black",}} key={column.id}>
                 {row[column.id]}
               </TableCell>
             ))}
@@ -116,6 +118,7 @@ const DataTable = ({rows,columnsData}) => {
     </Table>
   </TableContainer>
 </DndContext>
+</div>
 )
 };
 
